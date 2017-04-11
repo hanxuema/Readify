@@ -4,17 +4,19 @@ using System.Linq;
 using System.Net;
 using System.Net.Http;
 using System.Web.Http;
+using System.Threading;
+using System.Threading.Tasks;
 
 namespace Readify.Controllers
 {
     [RoutePrefix("api")]
     public class ReadifyController : ApiController
     {
-        
+
 
         [Route("fibonacci")]
         [HttpGet]
-        public long Fibonacci(int n)
+        public async Task<long> Fibonacci(int n)
         {
             int firstnumber = 0, secondnumber = 1, result = 0;
 
@@ -34,7 +36,7 @@ namespace Readify.Controllers
 
         [HttpGet]
         [Route("ReverseWords")]
-        public string ReverseWords(string sentence)
+        public async Task<string> ReverseWords(string sentence)
         {
             return new string(sentence.ToCharArray().Reverse().ToArray());
         }
@@ -42,14 +44,14 @@ namespace Readify.Controllers
 
         [HttpGet]
         [Route("Token")]
-        public string Token()
+        public async Task<string> Token()
         {
             return "6f563692-74cc-4e71-9744-b6d0c386c26b";
         }
 
         [HttpGet]
         [Route("TriangleType")]
-        public string TriangleType(int a, int b, int c)
+        public async Task<string> TriangleType(int a, int b, int c)
         {
             int shortest;
             int middle;
@@ -70,7 +72,7 @@ namespace Readify.Controllers
                 return "Error";
             }
 
-            if (shortest == middle && shortest == longest )
+            if (shortest == middle && shortest == longest)
             {
                 return "Equilateral";
             }
