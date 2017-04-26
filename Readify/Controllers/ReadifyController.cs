@@ -16,7 +16,7 @@ namespace Readify.Controllers
 
         [Route("fibonacci")]
         [HttpGet]
-        public async Task<long> Fibonacci(int n)
+        public long Fibonacci(int n)
         {
             int firstnumber = 0, secondnumber = 1, result = 0;
 
@@ -36,7 +36,7 @@ namespace Readify.Controllers
 
         [HttpGet]
         [Route("ReverseWords")]
-        public async Task<string> ReverseWords(string sentence)
+        public string ReverseWords(string sentence)
         {
             return new string(sentence.ToCharArray().Reverse().ToArray());
         }
@@ -44,14 +44,14 @@ namespace Readify.Controllers
 
         [HttpGet]
         [Route("Token")]
-        public async Task<string> Token()
+        public string Token()
         {
             return "6f563692-74cc-4e71-9744-b6d0c386c26b";
         }
 
         [HttpGet]
         [Route("TriangleType")]
-        public async Task<string> TriangleType(int a, int b, int c)
+        public string TriangleType(int a, int b, int c)
         {
             int shortest;
             int middle;
