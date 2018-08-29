@@ -6,13 +6,13 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using Readify.Models;
 
 namespace Readify.Controllers
 {
     [RoutePrefix("api")]
     public class ReadifyController : ApiController
     {
-
 
         [Route("fibonacci")]
         [HttpGet]
@@ -23,22 +23,20 @@ namespace Readify.Controllers
             if (n == 0) return 0; //To return the first Fibonacci number   
             if (n == 1) return 1; //To return the second Fibonacci number   
 
+            return Fibonacci(n - 1) + Fibonacci(n - 2);
 
-            for (int i = 2; i <= n; i++)
-            {
-                result = firstnumber + secondnumber;
-                firstnumber = secondnumber;
-                secondnumber = result;
-            }
-
-            return result;
         }
 
         [HttpGet]
         [Route("ReverseWords")]
         public string ReverseWords(string sentence)
         {
-            return new string(sentence.ToCharArray().Reverse().ToArray());
+            var charArray = new Char[sentence.Length];
+            for (int i = 0; i < sentence.Length; i++)
+            {
+                charArray[sentence.Length - i - 1] = sentence[i];
+            }
+            return new string(charArray);
         }
 
 
@@ -51,7 +49,7 @@ namespace Readify.Controllers
 
         [HttpGet]
         [Route("TriangleType")]
-        public string TriangleType(int a, int b, int c)
+        public async Task<string> TriangleType(int a, int b, int c)
         {
             int shortest;
             int middle;
@@ -83,6 +81,14 @@ namespace Readify.Controllers
             }
 
             return "Scalene";
+        }
+
+        [HttpGet]
+        [Route("TestHeaderAndBody/{firstName}/{lastName}")]
+        public async Task<string> TestApi([FromBody] Student student)
+        {
+            
+            return string.Format("fname header {0}, lname header {1}, fname body {2},lname body {3}");
         }
     }
 }
