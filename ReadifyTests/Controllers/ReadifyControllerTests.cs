@@ -124,5 +124,78 @@ namespace Readify.Controllers.Tests
 
             Assert.AreEqual(result, "");
         }
+
+        [TestMethod()]
+        public void Token_Should_Return_Correct_Token()
+        {
+            var readifyCotr = new ReadifyController();
+            var result = readifyCotr.Token();
+
+            Assert.AreEqual(result, "6f563692-74cc-4e71-9744-b6d0c386c26b");
+        }
+
+        [TestMethod()]
+        public void TriangleType_Should_Return_Error_If_Para_Are_1_2_3()
+        {
+            var readifyCotr = new ReadifyController();
+            var result = readifyCotr.TriangleType(1,2,3);
+            Assert.AreEqual(result, "Error");
+        }
+        [TestMethod()]
+        public void TriangleType_Should_Return_Error_If_Para_Are_1_3_1()
+        {
+            var readifyCotr = new ReadifyController();
+            var result = readifyCotr.TriangleType(1, 3, 1);
+            Assert.AreEqual(result, "Error");
+        }
+        [TestMethod()]
+        public void TriangleType_Should_Return_Error_If_Para_Are_Minus()
+        {
+            var readifyCotr = new ReadifyController();
+            var result = readifyCotr.TriangleType(-3, 4, 2);
+            Assert.AreEqual(result, "Error");
+        }
+        [TestMethod()]
+        public void TriangleType_Should_Return_Error_If_Para_Are_Zero()
+        {
+            var readifyCotr = new ReadifyController();
+            var result = readifyCotr.TriangleType(0, 4, 2);
+            Assert.AreEqual(result, "Error");
+        }
+        [TestMethod()]
+        public void TriangleType_Should_Return_Equilateral_If_Para_Are_Equal_And_Greater_Than_Zero()
+        {
+            var readifyCotr = new ReadifyController();
+            var result = readifyCotr.TriangleType(3,3,3);
+            Assert.AreEqual(result, "Equilateral");
+        }
+           [TestMethod()]
+        public void TriangleType_Should_Return_Isosceles_If_Only_A_And_B_Are_Equal()
+        {
+            var readifyCotr = new ReadifyController();
+            var result = readifyCotr.TriangleType(3,3,2);
+            Assert.AreEqual(result, "Isosceles");
+        }
+        [TestMethod()]
+        public void TriangleType_Should_Return_Isosceles_If_Only_C_And_B_Are_Equal()
+        {
+            var readifyCotr = new ReadifyController();
+            var result = readifyCotr.TriangleType(1, 2, 2);
+            Assert.AreEqual(result, "Isosceles");
+        }
+        [TestMethod()]
+        public void TriangleType_Should_Return_Isosceles_If_Only_A_And_C_Are_Equal()
+        {
+            var readifyCotr = new ReadifyController();
+            var result = readifyCotr.TriangleType(3, 2, 3);
+            Assert.AreEqual(result, "Isosceles");
+        }
+        [TestMethod()]
+        public void TriangleType_Should_Return_Scalene_If_Para_Are_NOT_Equal()
+        {
+            var readifyCotr = new ReadifyController();
+            var result = readifyCotr.TriangleType(3, 2, 4);
+            Assert.AreEqual(result, "Scalene");
+        }
     }
 }

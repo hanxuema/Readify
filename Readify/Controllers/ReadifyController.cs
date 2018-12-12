@@ -12,7 +12,7 @@ namespace Readify.Controllers
     [RoutePrefix("api")]
     public class ReadifyController : ApiController
     {
-        private readonly string myToken ="6f563692-74cc-4e71-9744-b6d0c386c26b";
+        private readonly string myToken = "6f563692-74cc-4e71-9744-b6d0c386c26b";
 
         [Route("fibonacci")]
         [HttpGet]
@@ -21,13 +21,13 @@ namespace Readify.Controllers
             n = Math.Abs(n);
             int[] fibArray = new int[n + 2];
             int index;
-             
+
             fibArray[0] = 0;
             fibArray[1] = 1;
 
             for (index = 2; index <= n; index++)
             {
-            
+
                 fibArray[index] = fibArray[index - 1] + fibArray[index - 2];
             }
 
@@ -63,37 +63,30 @@ namespace Readify.Controllers
         [Route("TriangleType")]
         public string TriangleType(int a, int b, int c)
         {
-            int shortest;
-            int middle;
-            int longest;
-            int[] input = new int[3] { a, b, c };
+            //Equilateral: All the side are equal in size.
 
-            //find the shortest
-            Array.Sort(input);
-            shortest = input[0];
-            //find the middle
-            middle = input[1];
-            //find the longest
-            longest = input[2];
-
-            //if the shortest plus the middel is less or equal to the largest
-            if (shortest + middle <= longest)
+            //Isosceles: Any two sized are equal.
+            if (a <= 0 || b <= 0 || c <= 0)
+            {
+                return "Error";
+            }
+            if (a + b <= c || a + c <= b || b + c <= a)
             {
                 return "Error";
             }
 
-            if (shortest == middle && shortest == longest)
+            if (a == b && b == c)
             {
                 return "Equilateral";
             }
 
-            if (shortest == middle || middle == longest)
+            if ((a == b && b != c) || (b == c && a != c) || (a == c && b != c))
             {
                 return "Isosceles";
             }
 
             return "Scalene";
         }
- 
+
     }
 }
