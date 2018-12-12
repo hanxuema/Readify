@@ -80,9 +80,9 @@ namespace Readify.Controllers.Tests
         public void Fibonacci_Should_Return_2880067194370816000_If_Input_Is_90()
         {
             var readifyCotr = new ReadifyController();
-            var result = readifyCotr.Fibonacci(90);
+            var result = readifyCotr.Fibonacci(92);
 
-            Assert.AreEqual(result, 2880067194370816120);
+            Assert.AreEqual(result, 7540113804746346000);
 
         }
 
@@ -126,6 +126,23 @@ namespace Readify.Controllers.Tests
 
             Assert.AreEqual(result, "A_BC");
         }
+        [TestMethod()]
+        public void ReverseWords_Should_Return_fldjas_If_Input_Is_sajdlf()
+        {
+            var readifyCotr = new ReadifyController();
+            var result = readifyCotr.ReverseWords("   sajdlf");
+
+            Assert.AreEqual(result, "   fldjas");
+        }
+        [TestMethod()]
+        public void ReverseWords_Should_Return_fldjas_If_Input_Is_abbccd()
+        {
+            var readifyCotr = new ReadifyController();
+            var result = readifyCotr.ReverseWords("ab bc cd");
+
+            Assert.AreEqual(result, "ba cb dc");
+        }
+    
         [TestMethod()]
         public void ReverseWords_Should_Return_EmptyString_If_Input_Has_Only_Space()
         {

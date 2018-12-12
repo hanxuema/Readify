@@ -6,7 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using System.Numerics;
+using System.Text;
 
 namespace Readify.Controllers
 {
@@ -17,13 +17,13 @@ namespace Readify.Controllers
 
         [Route("fibonacci")]
         [HttpGet]
-        public BigInteger Fibonacci(long n)
+        public long Fibonacci(int n)
         {
             if (n < 0)
             {
                 n = 0 - n;
             }
-            BigInteger[] fibArray = new BigInteger[n + 2];
+            long[] fibArray = new long[n + 2];
             int index;
 
             fibArray[0] = 0;
@@ -47,12 +47,35 @@ namespace Readify.Controllers
             {
                 return "";
             }
-            var charArray = new Char[sentence.Length];
-            for (int i = 0; i < sentence.Length; i++)
+            Stack<char> stack = new Stack<char>();
+
+            var sb = new StringBuilder();
+            for (int i = 0; i < sentence.Length; ++i)
             {
-                charArray[sentence.Length - i - 1] = sentence[i];
+                if (sentence[i] != ' ')
+                {
+                    stack.Push(sentence[i]);
+                }
+                   
+                else
+                {
+                    while (stack.Count > 0)
+                    {
+                        sb.Append(stack.Pop());
+
+                    }
+                    sb.Append(" ");
+                }
             }
-            return new string(charArray);
+
+            // Since there may not be  
+            // space after last word.  
+            while (stack.Count > 0)
+            {
+                sb.Append(stack.Pop());
+            }
+
+            return sb.ToString();
         }
 
 
