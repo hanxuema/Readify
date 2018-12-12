@@ -5,6 +5,8 @@ VisualStudioVersion = 15.0.26403.0
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Readify", "Readify\Readify.csproj", "{C417A201-69F2-4A5E-920D-53FC3BC52F9F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ReadifyTests", "ReadifyTests\ReadifyTests.csproj", "{AD9D8018-52C5-4332-B597-A977500C9FCB}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,8 +17,15 @@ Global
 		{C417A201-69F2-4A5E-920D-53FC3BC52F9F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{C417A201-69F2-4A5E-920D-53FC3BC52F9F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{C417A201-69F2-4A5E-920D-53FC3BC52F9F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{AD9D8018-52C5-4332-B597-A977500C9FCB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{AD9D8018-52C5-4332-B597-A977500C9FCB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{AD9D8018-52C5-4332-B597-A977500C9FCB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{AD9D8018-52C5-4332-B597-A977500C9FCB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5F952E5A-3D72-4D2F-85CE-15B823CBB878}
 	EndGlobalSection
 EndGlobal

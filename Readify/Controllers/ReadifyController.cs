@@ -12,11 +12,13 @@ namespace Readify.Controllers
     [RoutePrefix("api")]
     public class ReadifyController : ApiController
     {
+        private readonly string myToken ="6f563692-74cc-4e71-9744-b6d0c386c26b";
 
         [Route("fibonacci")]
         [HttpGet]
         public long Fibonacci(int n)
         {
+            n = Math.Abs(n);
             int[] fibArray = new int[n + 2];
             int index;
              
@@ -37,6 +39,10 @@ namespace Readify.Controllers
         [Route("ReverseWords")]
         public string ReverseWords(string sentence)
         {
+            if (string.IsNullOrWhiteSpace(sentence))
+            {
+                return "";
+            }
             var charArray = new Char[sentence.Length];
             for (int i = 0; i < sentence.Length; i++)
             {
@@ -50,12 +56,12 @@ namespace Readify.Controllers
         [Route("Token")]
         public string Token()
         {
-            return "6f563692-74cc-4e71-9744-b6d0c386c26b-99999";
+            return myToken;
         }
 
         [HttpGet]
         [Route("TriangleType")]
-        public async Task<string> TriangleType(int a, int b, int c)
+        public string TriangleType(int a, int b, int c)
         {
             int shortest;
             int middle;
