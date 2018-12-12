@@ -77,12 +77,12 @@ namespace Readify.Controllers.Tests
         }
         
          [TestMethod()]
-        public void Fibonacci_Should_Return_2880067194370816000_If_Input_Is_90()
+        public void Fibonacci_Should_Return_7540113804746346429_If_Input_Is_92()
         {
             var readifyCotr = new ReadifyController();
             var result = readifyCotr.Fibonacci(92);
 
-            Assert.AreEqual(result, 7540113804746346000);
+            Assert.AreEqual(result, 7540113804746346429);
 
         }
 
