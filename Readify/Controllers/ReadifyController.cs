@@ -6,7 +6,6 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Threading;
 using System.Threading.Tasks;
-using Readify.Models;
 
 namespace Readify.Controllers
 {
@@ -18,12 +17,19 @@ namespace Readify.Controllers
         [HttpGet]
         public long Fibonacci(int n)
         {
-            int firstnumber = 0, secondnumber = 1, result = 0;
+            int[] fibArray = new int[n + 2];
+            int index;
+             
+            fibArray[0] = 0;
+            fibArray[1] = 1;
 
-            if (n == 0) return 0; //To return the first Fibonacci number   
-            if (n == 1) return 1; //To return the second Fibonacci number   
+            for (index = 2; index <= n; index++)
+            {
+            
+                fibArray[index] = fibArray[index - 1] + fibArray[index - 2];
+            }
 
-            return Fibonacci(n - 1) + Fibonacci(n - 2);
+            return fibArray[n];
 
         }
 
@@ -44,7 +50,7 @@ namespace Readify.Controllers
         [Route("Token")]
         public string Token()
         {
-            return "6f563692-74cc-4e71-9744-b6d0c386c26b";
+            return "6f563692-74cc-4e71-9744-b6d0c386c26b-99999";
         }
 
         [HttpGet]
@@ -82,13 +88,6 @@ namespace Readify.Controllers
 
             return "Scalene";
         }
-
-        [HttpGet]
-        [Route("TestHeaderAndBody/{firstName}/{lastName}")]
-        public async Task<string> TestApi([FromBody] Student student)
-        {
-            
-            return string.Format("fname header {0}, lname header {1}, fname body {2},lname body {3}");
-        }
+ 
     }
 }
