@@ -135,12 +135,12 @@ namespace Readify.Controllers.Tests
             Assert.AreEqual(result, "   fldjas");
         }
         [TestMethod()]
-        public void ReverseWords_Should_Return_fldjas_If_Input_Is_abbccd()
+        public void ReverseWords_Should_Return_bacbdc_If_Input_Is_abbccd()
         {
             var readifyCotr = new ReadifyController();
-            var result = readifyCotr.ReverseWords("ab bc cd");
+            var result = readifyCotr.ReverseWords("ab  bc  cd");
 
-            Assert.AreEqual(result, "ba cb dc");
+            Assert.AreEqual(result, "ba  cb  dc");
         }
     
         [TestMethod()]

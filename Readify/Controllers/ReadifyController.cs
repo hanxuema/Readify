@@ -54,22 +54,22 @@ namespace Readify.Controllers
             {
                 if (sentence[i] != ' ')
                 {
+                    //adding the words to the stack until having space
                     stack.Push(sentence[i]);
-                }
-                   
+                } 
                 else
                 {
                     while (stack.Count > 0)
                     {
+                        //now pop up to the sb
                         sb.Append(stack.Pop());
 
                     }
+                    //in case have more than 1 space
                     sb.Append(" ");
                 }
             }
-
-            // Since there may not be  
-            // space after last word.  
+             
             while (stack.Count > 0)
             {
                 sb.Append(stack.Pop());
