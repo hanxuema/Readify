@@ -6,6 +6,7 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Threading;
 using System.Threading.Tasks;
+using System.Numerics;
 
 namespace Readify.Controllers
 {
@@ -16,10 +17,13 @@ namespace Readify.Controllers
 
         [Route("fibonacci")]
         [HttpGet]
-        public long Fibonacci(int n)
+        public BigInteger Fibonacci(long n)
         {
-            n = Math.Abs(n);
-            int[] fibArray = new int[n + 2];
+            if (n < 0)
+            {
+                n = 0 - n;
+            }
+            BigInteger[] fibArray = new BigInteger[n + 2];
             int index;
 
             fibArray[0] = 0;

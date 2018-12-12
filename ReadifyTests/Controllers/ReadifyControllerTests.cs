@@ -75,6 +75,16 @@ namespace Readify.Controllers.Tests
             Assert.AreEqual(result, 832040);
 
         }
+        
+         [TestMethod()]
+        public void Fibonacci_Should_Return_2880067194370816000_If_Input_Is_90()
+        {
+            var readifyCotr = new ReadifyController();
+            var result = readifyCotr.Fibonacci(90);
+
+            Assert.AreEqual(result, 2880067194370816120);
+
+        }
 
         [TestMethod()]
         public void ReverseWords_Should_Return_abc_If_Input_Is_cba()
